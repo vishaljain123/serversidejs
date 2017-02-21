@@ -4,9 +4,9 @@ var io = require('socket.io')(http);
 
 
 
-app.get('/', function(req, res){
-  //res.sendFile('/Users/maansoftwares-02/Desktop/latest/chat/testingpart2/simple.html');
-});
+// app.get('/', function(req, res){
+//   res.sendFile('/Users/maansoftwares-02/Desktop/latest/chat/testingpart2/simple.html');
+// });
 var clients;
 
 
