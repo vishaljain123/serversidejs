@@ -2,6 +2,8 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+
+alert("hey!!user");
 // app.get('/', function(req, res){
 //   res.sendFile('/Users/maansoftwares-02/Desktop/latest/chat/testingpart2/simple.html');
 // });
