@@ -18,6 +18,41 @@
 // });
 
 
+/******New code*****/
+
+var app = require('express')();
+var http = require('http').createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8081, '172.31.18.133');;
+var io = require('socket.io')(http);
+
+
+io.on('connection', function(socket){
+
+	console.log("user is coneected"+ socket.id);
+
+socket.on('join',function(uname){
+
+	//clients=uname;
+});	
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg,socket.id);
+  });
+
+  socket.on("disconnect",function(){
+
+  		console.log("use disconnected");
+  });
+});
+
+
+/******New code*******/
+
+
+
+
+/**
 
 //var http1 = require('http');
 var http = require('http');
