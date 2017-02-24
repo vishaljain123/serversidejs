@@ -1,6 +1,7 @@
 var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var http = require('http');
+var httpio=http.Server(app);
+var io = require('socket.io')(httpio);
 
 
 
@@ -10,10 +11,27 @@ var io = require('socket.io')(http);
 var clients;
 
 
+
+
+// http.listen(3000, function(){
+//   console.log('listening on *:3000');
+// });
+
+
+
+//var http1 = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8080, '127.0.0.1');
+console.log('Server running at http://192.168.14.180:8080/');
+
+
+
 console.log("hey user you are most welcome!!!");
 io.on('connection', function(socket){
 
-	console.log("use is coneected"+ socket.id);
+	console.log("user is coneected"+ socket.id);
 
 socket.on('join',function(uname){
 
@@ -27,8 +45,4 @@ socket.on('join',function(uname){
 
   		console.log("use disconnected");
   });
-});
-
-http.listen(3000, function(){
-  console.log('listening on *:3000');
 });
