@@ -44,33 +44,33 @@ server.listen(8081, '172.31.18.133');
 // });
 
 
-/**
+
 //var http1 = require('http');
-var http = require('http');
+// var http = require('http');
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(8081, '172.31.18.133');
-console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
+// http.createServer(function (req, res) {
+//   res.writeHead(200, {'Content-Type': 'text/plain'});
+//   res.end('Hello World\n');
+// }).listen(8081, '172.31.18.133');
+// console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
 
-var io=require('socket.io')(http);
+// var io=require('socket.io')(http);
 
-console.log("hey user you are most welcome!!!");
-io.on('connection', function(socket){
+// console.log("hey user you are most welcome!!!");
+// io.on('connection', function(socket){
 
-	console.log("user is coneected"+ socket.id);
+// 	console.log("user is coneected"+ socket.id);
 
-socket.on('join',function(uname){
+// socket.on('join',function(uname){
 
-	//clients=uname;
-});	
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg,socket.id);
-  });
+// 	//clients=uname;
+// });	
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg,socket.id);
+//   });
 
-  socket.on("disconnect",function(){
+//   socket.on("disconnect",function(){
 
-  		console.log("use disconnected");
-  });
-});
+//   		console.log("use disconnected");
+//   });
+// });
