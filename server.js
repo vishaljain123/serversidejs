@@ -1,5 +1,5 @@
 var app = require('express')();
-
+var http = require('http');
 var httpio=http.Server(app);
 var io = require('socket.io')(httpio);
 
@@ -20,7 +20,7 @@ var io = require('socket.io')(httpio);
 
 
 //var http1 = require('http');
-var http = require('http');
+
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
