@@ -11,22 +11,11 @@
 //var clients;
 
 
-
-
-// http.listen(3000, function(){
-//   console.log('listening on *:3000');
-// });
-
-
-/******New code*****/
-
-var app = require('express')();
-var http = require('http').createServer(function (req, res) {
+var server = require('http').createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-}).listen(8081, '172.31.18.133');;
-var io = require('socket.io')(http);
-
+});  
+var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
 
@@ -46,14 +35,16 @@ socket.on('join',function(uname){
   });
 });
 
+server.listen(8081, '172.31.18.133');  
 
-/******New code*******/
 
 
+// http.listen(3000, function(){
+//   console.log('listening on *:3000');
+// });
 
 
 /**
-
 //var http1 = require('http');
 var http = require('http');
 
