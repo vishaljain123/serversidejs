@@ -1,14 +1,14 @@
-var app = require('express')();
-var http = require('http');
-var httpio=http.Server(app);
-var io = require('socket.io')(httpio);
+//var app = require('express')();
+
+//var httpio=http.Server(app);
+//var io = require('socket.io')(httpio);
 
 
 
 // app.get('/', function(req, res){
 //   res.sendFile('/Users/maansoftwares-02/Desktop/latest/chat/testingpart2/simple.html');
 // });
-var clients;
+//var clients;
 
 
 
@@ -20,11 +20,12 @@ var clients;
 
 
 //var http1 = require('http');
+var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-}).listen(8080, '172.31.18.133');
-console.log('Server running at http://172.31.18.133:8080/');
+}).listen(8081, '127.0.0.1');
+console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
 
 
 
