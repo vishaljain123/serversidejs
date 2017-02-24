@@ -23,26 +23,26 @@ var clients;
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-}).listen(8080, '127.0.0.1');
-console.log('Server running at http://192.168.14.180:8080/');
+}).listen(8080, '172.31.18.133');
+console.log('Server running at http://172.31.18.133:8080/');
 
 
 
-console.log("hey user you are most welcome!!!");
-io.on('connection', function(socket){
+// console.log("hey user you are most welcome!!!");
+// io.on('connection', function(socket){
 
-	console.log("user is coneected"+ socket.id);
+// 	console.log("user is coneected"+ socket.id);
 
-socket.on('join',function(uname){
+// socket.on('join',function(uname){
 
-	clients=uname;
-});	
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg,clients,socket.id);
-  });
+// 	clients=uname;
+// });	
+//   socket.on('chat message', function(msg){
+//     io.emit('chat message', msg,clients,socket.id);
+//   });
 
-  socket.on("disconnect",function(){
+//   socket.on("disconnect",function(){
 
-  		console.log("use disconnected");
-  });
-});
+//   		console.log("use disconnected");
+//   });
+// });
