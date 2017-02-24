@@ -37,10 +37,10 @@ io.on('connection', function(socket){
 
 socket.on('join',function(uname){
 
-	clients=uname;
+	//clients=uname;
 });	
   socket.on('chat message', function(msg){
-    io.emit('chat message', msg,clients,socket.id);
+    io.emit('chat message', msg,socket.id);
   });
 
   socket.on("disconnect",function(){
