@@ -10,21 +10,16 @@
 // });
 //var clients;
 
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var server = require('http').createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-});  
-var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
 
 	console.log("user is coneected"+ socket.id);
 
-socket.on('join',function(uname){
 
-	//clients=uname;
-});	
   socket.on('chat message', function(msg){
     io.emit('chat message', msg,socket.id);
   });
@@ -35,28 +30,22 @@ socket.on('join',function(uname){
   });
 });
 
-server.listen(8081, '172.31.18.133');  
+http.listen(8081, '172.31.18.133', function(req,res){
+  console.log('listening on *:8081 172.31.18.133');
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+});
 
 
 
-// http.listen(3000, function(){
-//   console.log('listening on *:3000');
-// });
 
 
-
-//var http1 = require('http');
-// var http = require('http');
-
-// http.createServer(function (req, res) {
+// var server = require('http').createServer(function (req, res) {
 //   res.writeHead(200, {'Content-Type': 'text/plain'});
 //   res.end('Hello World\n');
-// }).listen(8081, '172.31.18.133');
-// console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
+// });  
+// var io = require('socket.io')(server);
 
-// var io=require('socket.io')(http);
-
-// console.log("hey user you are most welcome!!!");
 // io.on('connection', function(socket){
 
 // 	console.log("user is coneected"+ socket.id);
@@ -74,3 +63,43 @@ server.listen(8081, '172.31.18.133');
 //   		console.log("use disconnected");
 //   });
 // });
+
+// server.listen(8081, '172.31.18.133');  
+
+
+
+// // http.listen(3000, function(){
+// //   console.log('listening on *:3000');
+// // });
+
+
+
+// //var http1 = require('http');
+// // var http = require('http');
+
+// // http.createServer(function (req, res) {
+// //   res.writeHead(200, {'Content-Type': 'text/plain'});
+// //   res.end('Hello World\n');
+// // }).listen(8081, '172.31.18.133');
+// // console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
+
+// // var io=require('socket.io')(http);
+
+// // console.log("hey user you are most welcome!!!");
+// // io.on('connection', function(socket){
+
+// // 	console.log("user is coneected"+ socket.id);
+
+// // socket.on('join',function(uname){
+
+// // 	//clients=uname;
+// // });	
+// //   socket.on('chat message', function(msg){
+// //     io.emit('chat message', msg,socket.id);
+// //   });
+
+// //   socket.on("disconnect",function(){
+
+// //   		console.log("use disconnected");
+// //   });
+// // });
