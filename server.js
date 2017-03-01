@@ -1,50 +1,19 @@
-//var app = require('express')();
-
-//var httpio=http.Server(app);
-//var io = require('socket.io')(httpio);
 
 
+// var http = require('http');
 
-// app.get('/', function(req, res){
-//   res.sendFile('/Users/maansoftwares-02/Desktop/latest/chat/testingpart2/simple.html');
+// // Send index.html to all requests
+// var app = http.createServer(function(req, res) {
+//     res.writeHead(200, {'Content-Type': 'text/html'});
+//     res.end("hello user!!");
 // });
-//var clients;
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// app.get('/clientaws', function(req, res){
+//   res.sendFile(__dirname + '/client');
+// });
 
-
-io.on('connection', function(socket){
-
-	console.log("user is coneected"+ socket.id);
-
-
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg,socket.id);
-  });
-
-  socket.on("disconnect",function(){
-
-  		console.log("use disconnected");
-  });
-});
-
-http.listen(8081, '172.31.18.133', function(req,res){
-  console.log('listening on *:8081 172.31.18.133');
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-});
-
-
-
-
-
-// var server = require('http').createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/plain'});
-//   res.end('Hello World\n');
-// });  
-// var io = require('socket.io')(server);
+// // Socket.io server listens to our app
+// var io = require('socket.io').listen(app);
 
 // io.on('connection', function(socket){
 
@@ -63,43 +32,22 @@ http.listen(8081, '172.31.18.133', function(req,res){
 //   		console.log("use disconnected");
 //   });
 // });
-
-// server.listen(8081, '172.31.18.133');  
-
+// app.listen(8081, '172.31.18.133');
 
 
-// // http.listen(3000, function(){
-// //   console.log('listening on *:3000');
-// // });
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
+io.on('connection', function (socket){
+   console.log('connection');
 
+  socket.on('CH01', function (from, msg) {
+    console.log('MSG', from, ' saying ', msg);
+  });
 
-// //var http1 = require('http');
-// // var http = require('http');
+});
 
-// // http.createServer(function (req, res) {
-// //   res.writeHead(200, {'Content-Type': 'text/plain'});
-// //   res.end('Hello World\n');
-// // }).listen(8081, '172.31.18.133');
-// // console.log('Server running at http://APP_PRIVATE_IP_ADDRESS:8080/');
-
-// // var io=require('socket.io')(http);
-
-// // console.log("hey user you are most welcome!!!");
-// // io.on('connection', function(socket){
-
-// // 	console.log("user is coneected"+ socket.id);
-
-// // socket.on('join',function(uname){
-
-// // 	//clients=uname;
-// // });	
-// //   socket.on('chat message', function(msg){
-// //     io.emit('chat message', msg,socket.id);
-// //   });
-
-// //   socket.on("disconnect",function(){
-
-// //   		console.log("use disconnected");
-// //   });
-// // });
+http.listen(8081, '172.31.18.133', function () {
+  console.log('listening on *:8081 172.31.18.133');
+});
